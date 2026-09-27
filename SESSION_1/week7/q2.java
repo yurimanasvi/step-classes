@@ -1,0 +1,48 @@
+package SESSION_1.week7;
+public class q2 {
+
+    private boolean[] results;
+    private final int totalQuestions;
+    private int answerCount;
+
+    q2(int totalQuestions) {
+        this.totalQuestions = totalQuestions;
+        results = new boolean[totalQuestions];
+        answerCount = 0;
+    }
+
+    void recordAnswer(boolean correct) {
+
+        if (answerCount < totalQuestions) {
+            results[answerCount] = correct;
+            answerCount++;
+        } else {
+            System.out.println("No more answers can be recorded");
+        }
+    }
+
+    int getScore() {
+
+        int score = 0;
+
+        for (int i = 0; i < answerCount; i++) {
+            if (results[i]) {
+                score++;
+            }
+        }
+
+        return score;
+    }
+
+    public static void main(String[] args) {
+
+        q2 sc = new q2(4);
+
+        sc.recordAnswer(true);
+        sc.recordAnswer(true);
+        sc.recordAnswer(false);
+        sc.recordAnswer(true);
+
+        System.out.println("Score: " + sc.getScore());
+    }
+}
